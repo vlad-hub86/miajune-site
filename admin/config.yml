@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: vlad-hub86/miajune-site
+  branch: main
+  # OAuth bridge (Cloudflare Worker or Netlify) — set after deploying it:
+  # base_url: https://YOUR-OAUTH-WORKER.workers.dev
+  open_authoring: true   # Marketing users without repo write submit posts as PRs
+
+publish_mode: editorial_workflow   # Drafts -> In review -> Ready -> Publish (PR-based approval)
+
+media_folder: "images/news"
+public_folder: "/images/news"
+
+site_url: https://www.miajunefacialbar.com
+display_url: https://vlad-hub86.github.io/miajune-site/
+
+collections:
+  - name: news
+    label: "News & Blog Posts"
+    folder: "news/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+      - { label: "Author", name: "author", widget: "string", default: "Allison Kravchuk" }
+      - { label: "Teaser (one sentence shown on the News page and home page)", name: "teaser", widget: "string" }
+      - { label: "Feature on the home page?", name: "featured", widget: "boolean", default: false }
+      - { label: "Post body", name: "body", widget: "markdown" }
