@@ -2,8 +2,7 @@ backend:
   name: github
   repo: vlad-hub86/miajune-site
   branch: main
-  # OAuth bridge (Cloudflare Worker or Netlify) — set after deploying it:
-  # base_url: https://YOUR-OAUTH-WORKER.workers.dev
+  base_url: https://sveltia-cms-auth.vlad-526.workers.dev
   open_authoring: true   # Marketing users without repo write submit posts as PRs
 
 publish_mode: editorial_workflow   # Drafts -> In review -> Ready -> Publish (PR-based approval)
