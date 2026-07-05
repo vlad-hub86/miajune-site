@@ -8,12 +8,26 @@
 <meta name="description" content="Glow together. Private facial bar parties for bachelorettes, birthdays, bridal showers and more — champagne included.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- FABLE5 -->
+<link rel="canonical" href="https://www.miajunefacialbar.com/parties.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mia June Facial Bar">
+<meta property="og:title" content="Private Parties — Mia June Facial Bar">
+<meta property="og:description" content="Glow together. Private facial bar parties for bachelorettes, birthdays, bridal showers and more — champagne included.">
+<meta property="og:url" content="https://www.miajunefacialbar.com/parties.html">
+<meta property="og:image" content="https://www.miajunefacialbar.com/images/the-mia-june-experience.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FDFAF6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
+<nav aria-label="Main navigation">
   <a class="nav-logo" href="index.html"><img src="images/mia-june-facial-bar-logo.png" alt="Mia June Facial Bar logo">Mia June Facial Bar</a>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a class="navlink" href="index.html">Home</a></li>
     <li><a class="navlink" href="services.html">Services</a></li>
@@ -26,7 +40,7 @@
   </ul>
 </nav>
 
-<div class="page">
+<main id="main" class="page">
 
   <div class="hero">
     <div class="hero-content">
@@ -39,7 +53,7 @@
       </div>
     </div>
     <div class="hero-img">
-      <img src="images/a-guest-in-a-pink-robe-enjoys-a-scalp-massage.jpg" alt="A guest in a pink robe enjoys a scalp massage">
+      <img loading="lazy" decoding="async" src="images/a-guest-in-a-pink-robe-enjoys-a-scalp-massage.jpg" alt="A guest in a pink robe enjoys a scalp massage">
       <div class="hero-img-tag">She deserves this.</div>
     </div>
   </div>
@@ -77,10 +91,10 @@
         <h2 class="sec-title">How it <em>looks.</em></h2>
       </div>
       <div class="pgallery">
-        <img src="images/the-mia-june-facial-bar-a-bright-room-lined-with-t.jpg" alt="The Mia June facial bar — a bright room lined with treatment chairs">
-        <img src="images/an-esthetician-guides-an-led-light-treatment.jpg" alt="An esthetician guides an LED light treatment">
-        <img src="images/a-guest-in-a-pink-robe-enjoys-a-scalp-massage.jpg" alt="A guest in a pink robe enjoys a scalp massage">
-        <img src="images/a-guest-reclines-with-an-led-panel-in-the-lounge.jpg" alt="A guest reclines with an LED panel in the lounge">
+        <img loading="lazy" decoding="async" src="images/the-mia-june-facial-bar-a-bright-room-lined-with-t.jpg" alt="The Mia June facial bar — a bright room lined with treatment chairs">
+        <img loading="lazy" decoding="async" src="images/an-esthetician-guides-an-led-light-treatment.jpg" alt="An esthetician guides an LED light treatment">
+        <img loading="lazy" decoding="async" src="images/a-guest-in-a-pink-robe-enjoys-a-scalp-massage.jpg" alt="A guest in a pink robe enjoys a scalp massage">
+        <img loading="lazy" decoding="async" src="images/a-guest-reclines-with-an-led-panel-in-the-lounge.jpg" alt="A guest reclines with an LED panel in the lounge">
       </div>
     </div>
   </section>
@@ -136,7 +150,7 @@
   </section>
 
   <div class="emi">
-    <div class="emi-img"><img src="images/an-esthetician-walks-a-smiling-guest-through-the-p.jpg" alt="An esthetician walks a smiling guest through the party menu"></div>
+    <div class="emi-img"><img loading="lazy" decoding="async" src="images/an-esthetician-walks-a-smiling-guest-through-the-p.jpg" alt="An esthetician walks a smiling guest through the party menu"></div>
     <div class="emi-content">
       <div class="eyebrow">Let's Plan It</div>
       <h3>Say the date. <em>We'll do the rest.</em></h3>
@@ -145,12 +159,19 @@
     </div>
   </div>
 
-</div>
+</main>
 
 <footer>
   <b>Mia June Facial Bar</b> &nbsp;·&nbsp; Birmingham, AL · Pelham, AL · Oxford, MS<br><br>
   © 2026 Mia June Facial Bar. All rights reserved. &nbsp;·&nbsp; Privacy Policy
 </footer>
 
+<script>
+(function(){
+  var t=document.querySelector('.nav-toggle'),l=document.querySelector('.nav-links');
+  if(t&&l){t.addEventListener('click',function(){
+    var open=l.classList.toggle('open');t.setAttribute('aria-expanded',open);});}
+})();
+</script>
 </body>
 </html>

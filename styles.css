@@ -260,3 +260,27 @@ footer b{color:var(--gold);font-weight:500;}
 .tile-body h3{font-family:'Playfair Display',serif;font-size:1.9rem;margin-bottom:8px;}
 .tile-body p{font-size:.85rem;line-height:1.7;color:rgba(253,250,246,.8);max-width:380px;}
 @media(max-width:900px){.tiles{grid-template-columns:1fr;}}
+
+/* ===== FABLE5 REFRESH: mobile nav, a11y ===== */
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--charcoal);color:var(--cream);
+  padding:12px 20px;z-index:200;font-size:.8rem;}
+.skip-link:focus{left:0;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:10px;margin-left:auto;}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--charcoal);margin:5px 0;transition:transform .25s,opacity .25s;}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:900px){
+  .nav-toggle{display:block;}
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--cream);border-bottom:1px solid rgba(196,168,130,.3);padding:12px 0 20px;}
+  .nav-links.open{display:flex;}
+  .nav-links a, .navlink{padding:12px 24px;font-size:.8rem;letter-spacing:.14em;}
+  .navlink.nav-book{margin:12px 24px 0;text-align:center;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+  .ticker-inner{animation:none;}
+}
+img{max-width:100%;height:auto;}

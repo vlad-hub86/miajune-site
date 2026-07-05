@@ -8,12 +8,40 @@
 <meta name="description" content="Reserve your skin moment at Birmingham, Pelham, or Oxford. Booking via Square Appointments.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- FABLE5 -->
+<link rel="canonical" href="https://www.miajunefacialbar.com/book.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mia June Facial Bar">
+<meta property="og:title" content="Book an Appointment — Mia June Facial Bar">
+<meta property="og:description" content="Reserve your skin moment at Birmingham, Pelham, or Oxford. Booking via Square Appointments.">
+<meta property="og:url" content="https://www.miajunefacialbar.com/book.html">
+<meta property="og:image" content="https://www.miajunefacialbar.com/images/the-mia-june-experience.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FDFAF6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"DaySpa","name":"Mia June Facial Bar",
+"image":"https://www.miajunefacialbar.com/images/mia-june-facial-bar-logo.png","url":"https://www.miajunefacialbar.com",
+"email":"info@miajunefacialbar.com",
+"brand":"Mia June Facial Bar","slogan":"Skin that glows, inside and out.",
+"department":[
+ {"@type":"DaySpa","name":"Mia June Facial Bar Birmingham","telephone":"+1-205-260-2812",
+  "address":{"@type":"PostalAddress","streetAddress":"2205 7th Ave S","addressLocality":"Birmingham","addressRegion":"AL","postalCode":"35233","addressCountry":"US"}},
+ {"@type":"DaySpa","name":"Mia June Facial Bar Pelham","telephone":"+1-205-728-8899",
+  "address":{"@type":"PostalAddress","streetAddress":"2152-A Pelham Pkwy","addressLocality":"Pelham","addressRegion":"AL","postalCode":"35124","addressCountry":"US"}},
+ {"@type":"DaySpa","name":"Mia June Facial Bar Oxford","telephone":"+1-662-801-5863",
+  "address":{"@type":"PostalAddress","streetAddress":"653 Concordia Ave","addressLocality":"Oxford","addressRegion":"MS","postalCode":"38655","addressCountry":"US"}}
+]}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
+<nav aria-label="Main navigation">
   <a class="nav-logo" href="index.html"><img src="images/mia-june-facial-bar-logo.png" alt="Mia June Facial Bar logo">Mia June Facial Bar</a>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a class="navlink" href="index.html">Home</a></li>
     <li><a class="navlink" href="services.html">Services</a></li>
@@ -26,7 +54,7 @@
   </ul>
 </nav>
 
-<div class="page">
+<main id="main" class="page">
 
   <section style="background:var(--blush);text-align:center;padding:88px 24px 64px;">
     <div class="eyebrow center">Book Your Visit</div>
@@ -110,7 +138,7 @@
     </div>
   </section>
 
-</div>
+</main>
 
 <footer>
   <b>Mia June Facial Bar</b> &nbsp;·&nbsp; Birmingham, AL · Pelham, AL · Oxford, MS<br><br>
@@ -118,6 +146,13 @@
 </footer>
 <script>
 function selSvc(el){document.querySelectorAll('.svc-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');}
+</script>
+<script>
+(function(){
+  var t=document.querySelector('.nav-toggle'),l=document.querySelector('.nav-links');
+  if(t&&l){t.addEventListener('click',function(){
+    var open=l.classList.toggle('open');t.setAttribute('aria-expanded',open);});}
+})();
 </script>
 </body>
 </html>
