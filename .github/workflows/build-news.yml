@@ -1,0 +1,26 @@
+name: Build news pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - "news/posts/**"
+      - "scripts/build-news.mjs"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/build-news.mjs
+      - name: Commit generated pages
+        run: |
+          git config user.name "miajune-news-bot"
+          git config user.email "actions@github.com"
+          git add news/*.html news.html index.html sitemap.xml
+          git diff --cached --quiet || git commit -m "Build news pages [skip ci]"
+          git push
