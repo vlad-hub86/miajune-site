@@ -26,13 +26,19 @@
 "image":"https://www.miajunefacialbar.com/images/mia-june-facial-bar-logo.png","url":"https://www.miajunefacialbar.com",
 "email":"info@miajunefacialbar.com",
 "brand":"Mia June Facial Bar","slogan":"Skin that glows, inside and out.",
+"priceRange":"$$",
+"_comment":"REPLACE aggregateRating below with your real Google rating + review count before publishing.",
+"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"120"},
 "department":[
- {"@type":"DaySpa","name":"Mia June Facial Bar Birmingham","telephone":"+1-205-260-2812",
-  "address":{"@type":"PostalAddress","streetAddress":"2205 7th Ave S","addressLocality":"Birmingham","addressRegion":"AL","postalCode":"35233","addressCountry":"US"}},
- {"@type":"DaySpa","name":"Mia June Facial Bar Pelham","telephone":"+1-205-728-8899",
-  "address":{"@type":"PostalAddress","streetAddress":"2152-A Pelham Pkwy","addressLocality":"Pelham","addressRegion":"AL","postalCode":"35124","addressCountry":"US"}},
- {"@type":"DaySpa","name":"Mia June Facial Bar Oxford","telephone":"+1-662-801-5863",
-  "address":{"@type":"PostalAddress","streetAddress":"653 Concordia Ave","addressLocality":"Oxford","addressRegion":"MS","postalCode":"38655","addressCountry":"US"}}
+ {"@type":"DaySpa","name":"Mia June Facial Bar Birmingham","telephone":"+1-205-260-2812","priceRange":"$$",
+  "address":{"@type":"PostalAddress","streetAddress":"2205 7th Ave S","addressLocality":"Birmingham","addressRegion":"AL","postalCode":"35233","addressCountry":"US"},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"10:00","closes":"16:00"}]},
+ {"@type":"DaySpa","name":"Mia June Facial Bar Pelham","telephone":"+1-205-728-8899","priceRange":"$$",
+  "address":{"@type":"PostalAddress","streetAddress":"2152-A Pelham Pkwy","addressLocality":"Pelham","addressRegion":"AL","postalCode":"35124","addressCountry":"US"},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"10:00","closes":"16:00"}]},
+ {"@type":"DaySpa","name":"Mia June Facial Bar Oxford","telephone":"+1-662-801-5863","priceRange":"$$",
+  "address":{"@type":"PostalAddress","streetAddress":"653 Concordia Ave","addressLocality":"Oxford","addressRegion":"MS","postalCode":"38655","addressCountry":"US"},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"10:00","closes":"17:00"}]}
 ]}
 </script>
 </head>
@@ -70,7 +76,7 @@
       </div>
     </div>
     <div class="hero-img">
-      <img loading="lazy" decoding="async" src="images/a-mia-june-esthetician-shares-product-picks-with-a.jpg" alt="A Mia June esthetician shares product picks with a smiling guest">
+      <img fetchpriority="high" decoding="async" width="960" height="900" src="images/a-mia-june-esthetician-shares-product-picks-with-a.jpg" alt="A Mia June esthetician shares product picks with a smiling guest">
       <div class="hero-img-tag">The Mia June Experience</div>
     </div>
   </div>
@@ -151,35 +157,69 @@
         <h2 class="sec-title">Explore <em>Mia June.</em></h2>
       </div>
       <div class="tiles">
-        <div class="tile" onclick="location.href='parties.html'">
+        <a class="tile" href="parties.html">
           <img loading="lazy" decoding="async" src="images/a-guest-relaxes-under-an-led-treatment-in-the-loun.jpg" alt="A guest relaxes under an LED treatment in the lounge">
           <div class="tile-body">
             <h3>Private Parties</h3>
             <p>The whole bar, just your people. Bachelorettes, birthdays, bridal showers — glow together.</p>
           </div>
-        </div>
-        <div class="tile" onclick="location.href='team.html'">
+        </a>
+        <a class="tile" href="team.html">
           <img loading="lazy" decoding="async" src="images/esthetician-performing-facial.jpg" alt="Esthetician performing facial">
           <div class="tile-body">
             <h3>Meet the Team</h3>
             <p>Licensed, Éminence-trained estheticians — the people behind your glow.</p>
           </div>
-        </div>
-        <div class="tile" onclick="location.href='about.html'">
+        </a>
+        <a class="tile" href="about.html">
           <img loading="lazy" decoding="async" src="images/magen-performing-a-facial-treatment.jpg" alt="Magen performing a facial treatment">
           <div class="tile-body">
             <h3>Our Story</h3>
             <p>Skincare built on passion, not pressure — from Fancy Face to Mia June.</p>
           </div>
-        </div>
-        <div class="tile" onclick="location.href='franchise.html'">
+        </a>
+        <a class="tile" href="franchise.html">
           <img loading="lazy" decoding="async" src="images/mia-june-experience.jpg" alt="Mia June Experience">
           <div class="tile-body">
             <h3>Franchise With Us</h3>
             <p>Bring accessible luxury to your community. Now expanding into new markets.</p>
           </div>
-        </div>
+        </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS — placeholder quotes below.
+       ACTION: replace the quote text and names with real reviews
+       pulled from your Google Business profiles before publishing,
+       and update the aggregateRating in the JSON-LD block in <head>
+       to match your real Google rating + review count.
+       ============================================================ -->
+  <section class="reviews-band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow center">Kind Words</div>
+        <h2 class="sec-title">Loved by our <em>guests.</em></h2>
+      </div>
+      <div class="reviews">
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>Best facial I've ever had. My skin was glowing for a week and the whole space just feels like a treat. I've already booked my next three visits.</blockquote>
+          <figcaption>Sarah M. <span>· Birmingham</span></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>The estheticians actually listen to what your skin needs instead of upselling. Accessible luxury is exactly right — I felt pampered without the pretension.</blockquote>
+          <figcaption>Jasmine T. <span>· Pelham</span></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>Booked the whole bar for my bridal party and it was the highlight of the weekend. Everyone left relaxed, glowing, and asking when we can come back.</blockquote>
+          <figcaption>Megan R. <span>· Oxford</span></figcaption>
+        </figure>
+      </div>
+      <div style="text-align:center;margin-top:44px;"><a class="btn ghost" href="book.html">Book Your Visit</a></div>
     </div>
   </section>
 
@@ -194,7 +234,15 @@
 
 <footer>
   <b>Mia June Facial Bar</b> &nbsp;·&nbsp; Birmingham, AL · Pelham, AL · Oxford, MS<br><br>
-  © 2026 Mia June Facial Bar. All rights reserved. &nbsp;·&nbsp; Privacy Policy
+  <span class="footer-links">
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="faq.html">FAQ</a>
+    <a href="parties.html">Parties</a>
+    <a href="book.html">Book Now</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </span>
+  © 2026 Mia June Facial Bar. All rights reserved.
 </footer>
 
 <script>
