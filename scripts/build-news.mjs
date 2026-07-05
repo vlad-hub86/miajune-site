@@ -1,0 +1,185 @@
+#!/usr/bin/env node
+// Mia June Facial Bar — news builder (zero dependencies)
+// Reads news/posts/*.md → writes news/<slug>.html, news.html listing,
+// homepage featured band (between FEATURED-NEWS markers), and sitemap.xml.
+// Run: node scripts/build-news.mjs   (also run by GitHub Action on every push)
+
+import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { join, basename } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
+const DOMAIN = "https://www.miajunefacialbar.com";
+
+// ---------- tiny front-matter + markdown ----------
+function parsePost(file) {
+  const raw = readFileSync(file, "utf8");
+  const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!m) throw new Error("No front matter: " + file);
+  const meta = {};
+  for (const line of m[1].split("\n")) {
+    const kv = line.match(/^(\w+):\s*(.*)$/);
+    if (kv) meta[kv[1]] = kv[2].replace(/^"(.*)"$/, "$1").trim();
+  }
+  meta.featured = String(meta.featured) === "true";
+  meta.slug = basename(file, ".md");
+  return { meta, body: m[2].trim() };
+}
+
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+function mdToHtml(md) {
+  // paragraphs, **bold**, *italic*, [text](url), ## headings — enough for news posts
+  return md.split(/\n\s*\n/).map((block) => {
+    block = block.trim();
+    if (!block) return "";
+    let h = esc(block);
+    h = h.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    h = h.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+    h = h.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    if (h.startsWith("## ")) return `<h2 class="sec-title" style="font-size:1.6rem;margin:36px 0 14px;">${h.slice(3)}</h2>`;
+    return `<p style="font-size:.95rem;line-height:1.9;color:var(--mid);margin-bottom:22px;">${h}</p>`;
+  }).join("\n");
+}
+
+const fmtDate = (d) =>
+  new Date(d + "T12:00:00Z").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+
+// ---------- load chrome (nav/footer) from an existing page ----------
+const chromeSrc = readFileSync(join(ROOT, "index.html"), "utf8");
+const NAV = chromeSrc.match(/<nav[\s\S]*?<\/nav>/)[0];
+const FOOTER = chromeSrc.match(/<footer[\s\S]*?<\/footer>/)[0];
+const NAVJS = `<script>
+(function(){
+  var t=document.querySelector('.nav-toggle'),l=document.querySelector('.nav-links');
+  if(t&&l){t.addEventListener('click',function(){
+    var open=l.classList.toggle('open');t.setAttribute('aria-expanded',open);});}
+})();
+</script>`;
+
+const relativize = (html, prefix) =>
+  html
+    .replace(/href="(index|services|team|parties|news|about|franchise|book)\.html"/g, `href="${prefix}$1.html"`)
+    .replace(/src="images\//g, `src="${prefix}images/`);
+
+function head(title, desc, canonPath, prefix) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${title}</title>
+<meta name="google-site-verification" content="z8ybuy_MRg4AkMtsosYGpiN6pn_AtHn2kxS0ULoucvc">
+<meta name="description" content="${desc}">
+<!-- FABLE5 -->
+<link rel="canonical" href="${DOMAIN}${canonPath}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mia June Facial Bar">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:url" content="${DOMAIN}${canonPath}">
+<meta property="og:image" content="${DOMAIN}/images/the-mia-june-experience.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FDFAF6">
+<link rel="icon" type="image/png" href="${prefix}images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="${prefix}styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+`;
+}
+
+// ---------- build ----------
+const posts = readdirSync(join(ROOT, "news/posts"))
+  .filter((f) => f.endsWith(".md"))
+  .map((f) => parsePost(join(ROOT, "news/posts", f)))
+  .sort((a, b) => (a.meta.date < b.meta.date ? 1 : -1));
+
+// 1. individual post pages
+for (const { meta, body } of posts) {
+  const doc =
+    head(`${meta.title} — Mia June Facial Bar`, meta.teaser, `/news/${meta.slug}.html`, "../") +
+    "\n" + relativize(NAV, "../") + `
+
+<main id="main" class="page">
+  <section style="max-width:760px;margin:0 auto;">
+    <div class="eyebrow">News · ${fmtDate(meta.date)}</div>
+    <h1 class="sec-title" style="margin-bottom:10px;">${meta.title}</h1>
+    <div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:36px;">By ${meta.author}</div>
+${mdToHtml(body)}
+    <div style="margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;">
+      <a class="btn" href="../book.html">Book an Appointment</a>
+      <a class="btn ghost" href="../news.html">← All News</a>
+    </div>
+  </section>
+</main>
+
+` + relativize(FOOTER, "../") + "\n" + NAVJS + "\n</body>\n</html>\n";
+  writeFileSync(join(ROOT, "news", `${meta.slug}.html`), doc);
+}
+
+// 2. news.html listing
+const cards = posts.map(({ meta }) => `      <div class="card">
+        <div class="card-body">
+          <div class="card-meta">${fmtDate(meta.date)} · ${meta.author}${meta.featured ? " · ★ Featured" : ""}</div>
+          <div class="card-title">${meta.title}</div>
+          <p class="card-text">${meta.teaser}</p>
+          <div class="card-foot"><span></span><a class="book-link" href="news/${meta.slug}.html">Read →</a></div>
+        </div>
+      </div>`).join("\n");
+
+const listing =
+  head("News — Mia June Facial Bar", "News, seasonal facials, and special offers from Mia June Facial Bar.", "/news.html", "") +
+  "\n" + NAV + `
+
+<main id="main" class="page">
+  <section style="background:var(--blush);text-align:center;padding:88px 24px 64px;">
+    <div class="eyebrow center">News</div>
+    <h1 class="sec-title" style="font-size:clamp(2.4rem,4.5vw,4rem);">What's new at<br><em>Mia June.</em></h1>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="grid3 news-grid" style="grid-template-columns:repeat(2,1fr);">
+${cards}
+      </div>
+    </div>
+  </section>
+</main>
+
+` + FOOTER + "\n" + NAVJS + "\n</body>\n</html>\n";
+writeFileSync(join(ROOT, "news.html"), listing);
+
+// 3. homepage featured band (newest featured post, else newest post)
+const feat = posts.find((p) => p.meta.featured) || posts[0];
+const band = `<!-- FEATURED-NEWS:START (generated by scripts/build-news.mjs — do not edit by hand) -->
+  <section style="background:var(--blush);padding:64px 48px;">
+    <div class="wrap" style="display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;" id="featured-news-grid">
+      <div class="eyebrow" style="margin:0;">What's New</div>
+      <div>
+        <h2 class="serif" style="font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.25;margin-bottom:8px;">${feat.meta.title}</h2>
+        <p style="font-size:.88rem;line-height:1.75;color:var(--mid);max-width:640px;">${feat.meta.teaser}</p>
+      </div>
+      <a class="btn gold" href="news/${feat.meta.slug}.html">Read More</a>
+    </div>
+  </section>
+<!-- FEATURED-NEWS:END -->`;
+
+let home = readFileSync(join(ROOT, "index.html"), "utf8");
+if (home.includes("<!-- FEATURED-NEWS:START")) {
+  home = home.replace(/<!-- FEATURED-NEWS:START[\s\S]*?<!-- FEATURED-NEWS:END -->/, band);
+} else {
+  home = home.replace(/(<div class="strip">[\s\S]*?<\/div>\n)/, `$1\n${band}\n`);
+}
+writeFileSync(join(ROOT, "index.html"), home);
+
+// 4. sitemap
+const staticPages = ["/", "/services.html", "/team.html", "/parties.html", "/about.html", "/franchise.html", "/book.html", "/news.html"];
+const urls = [...staticPages, ...posts.map((p) => `/news/${p.meta.slug}.html`)];
+writeFileSync(join(ROOT, "sitemap.xml"),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+  urls.map((u) => `  <url><loc>${DOMAIN}${u}</loc></url>`).join("\n") + "\n</urlset>\n");
+
+console.log(`built ${posts.length} posts · featured: "${feat.meta.title}"`);
