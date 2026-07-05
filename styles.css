@@ -284,3 +284,82 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   .ticker-inner{animation:none;}
 }
 img{max-width:100%;height:auto;}
+
+/* ===== FABLE5 MOBILE PASS ===== */
+/* fluid section rhythm */
+section{padding:clamp(56px,9vw,96px) clamp(20px,5vw,48px);}
+.sec-head{margin-bottom:clamp(36px,6vw,64px);}
+
+/* touch targets */
+@media(max-width:900px){
+  .btn{padding:16px 32px;width:100%;max-width:340px;text-align:center;}
+  .hero-btns{flex-direction:column;align-items:stretch;max-width:340px;}
+  .cta .btns{flex-direction:column;align-items:center;}
+  .book-link{padding:10px 0;display:inline-block;}
+
+  /* hero: content first, tighter */
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-content{padding:48px 22px;}
+  .hero-img{min-height:300px;order:2;}
+  .hero-sub{margin-bottom:28px;}
+  .hero-pills{margin-bottom:28px;}
+
+  /* stats strip: 2x2 with tighter cells */
+  .strip div{padding:28px 12px;}
+  .strip b{font-size:1.6rem;}
+
+  /* feature/person splits stack with sane image heights */
+  .feature-img img{height:300px;}
+  .person-img img{height:360px;}
+  .lux-content{padding:48px 22px;}
+  .lux-img{min-height:260px;}
+  .emi-img{min-height:240px;}
+  .emi-content{padding:44px 22px;}
+
+  /* menus: stack price/book under text */
+  .express-row{grid-template-columns:34px 1fr;gap:12px 14px;padding:22px 0;}
+  .express-row .price{grid-column:2;font-size:1.1rem;}
+  .express-row .book-link{grid-column:2;}
+  .express-num{font-size:1rem;padding-top:4px;}
+
+  /* cards/tiles/galleries */
+  .tile{min-height:300px;}
+  .tile-body{padding:24px;}
+  .card-img{height:220px;}
+  .tcard .card-img{height:280px;}
+  .pgallery img{height:160px;}
+  .tiers{gap:20px;}
+  .tier{padding:32px 24px;}
+  .award{gap:28px;}
+  .news-grid{grid-template-columns:1fr !important;}
+  #featured-news-grid{grid-template-columns:1fr !important;gap:16px !important;text-align:left;}
+  #featured-news-grid .btn{width:auto;max-width:none;align-self:start;}
+
+  /* nav: slightly shorter bar, logo scales */
+  .nav-logo img{height:44px;}
+  .nav-logo{font-size:.95rem;gap:9px;}
+
+  /* footer breathing room */
+  footer{padding:32px 20px;line-height:2;}
+
+  /* typography survives small screens */
+  .hero-title{font-size:clamp(2.1rem,9vw,2.8rem);}
+  .sec-title{font-size:clamp(1.7rem,7vw,2.4rem);}
+}
+
+/* very small phones */
+@media(max-width:400px){
+  .hero-pills .pill{font-size:.58rem;padding:7px 12px;}
+  .strip{grid-template-columns:repeat(2,1fr);}
+}
+
+/* desktop micro-polish (Fable 5 touch): calmer hover states, consistent transitions */
+.card, .tier, .booster, .loc{transition:transform .3s ease, box-shadow .3s ease;}
+@media(min-width:901px){
+  .card:hover, .booster:hover, .loc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(43,38,34,.08);}
+  .tier:hover{transform:translateY(-4px);}
+}
+.btn, .book-link, .navlink{transition:background .25s ease, color .25s ease, opacity .2s ease;}
+::selection{background:var(--gold);color:var(--cream);}
+html{-webkit-text-size-adjust:100%;}
+body{text-rendering:optimizeLegibility;}
