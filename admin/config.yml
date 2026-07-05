@@ -26,4 +26,5 @@ collections:
       - { label: "Author", name: "author", widget: "string", default: "Allison Kravchuk" }
       - { label: "Teaser (one sentence shown on the News page and home page)", name: "teaser", widget: "string" }
       - { label: "Feature on the home page?", name: "featured", widget: "boolean", default: false }
+      - { label: "Campaign image (shows on home page band, news cards, and post header)", name: "image", widget: "image", required: false }
       - { label: "Post body", name: "body", widget: "markdown" }
