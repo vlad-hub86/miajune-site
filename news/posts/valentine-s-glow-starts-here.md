@@ -4,6 +4,7 @@ date: 2026-02-11
 author: Allison Kravchuk
 teaser: "Introducing the Cherry Bomb Facial — radiant, refreshed, glowing skin for Valentine's season."
 featured: false
+image: images/a-guest-in-a-pink-robe-enjoys-a-scalp-massage.jpg
 ---
 This Valentine's season, we're turning up the glow at Mia June. Introducing our Cherry Bomb Facial, available February through March—a limited-time treatment designed to leave your skin radiant, refreshed, and glowing.
 

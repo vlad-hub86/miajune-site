@@ -4,6 +4,7 @@ date: 2026-06-10
 author: Allison Kravchuk
 teaser: "A cooling, glow-boosting treatment designed to refresh your skin and revive your complexion — the perfect seasonal reset."
 featured: true
+image: images/a-guest-reclines-with-an-led-panel-in-the-lounge.jpg
 ---
 Summer can leave skin feeling hot, tired, puffy, and dull. That's why we've created the perfect seasonal reset.
 
