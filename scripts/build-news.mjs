@@ -118,7 +118,7 @@ ${mdToHtml(body)}
   </section>
 </main>
 
-` + relativize(FOOTER, "../") + "\n" + NAVJS + "\n</body>\n</html>\n";
+` + relativize(FOOTER, "../") + "\n" + NAVJS + '\n<script src="../contact-fab.js" defer></script>\n</body>\n</html>\n";
   writeFileSync(join(ROOT, "news", `${meta.slug}.html`), doc);
 }
 
@@ -151,7 +151,7 @@ ${cards}
   </section>
 </main>
 
-` + FOOTER + "\n" + NAVJS + "\n</body>\n</html>\n";
+` + FOOTER + "\n" + NAVJS + '\n<script src="contact-fab.js" defer></script>\n</body>\n</html>\n";
 writeFileSync(join(ROOT, "news.html"), listing);
 
 // 3. homepage featured band (newest featured post, else newest post)

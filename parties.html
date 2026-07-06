@@ -35,12 +35,9 @@
     <a class="navlink" href="gift-cards.html">Gift Cards</a>
     <a class="navlink" href="team.html">Team</a>
     <a class="navlink active" href="parties.html">Parties</a>
-    <a class="navlink" href="gallery.html">Gallery</a>
     <a class="navlink" href="news.html">News</a>
     <a class="navlink" href="about.html">About</a>
     <a class="navlink" href="franchise.html">Franchise</a>
-    <a class="navlink" href="contact.html">Contact</a>
-    <a class="navlink nav-book" href="book.html">Book Now</a>
   </div>
 </nav>
 
@@ -52,7 +49,7 @@
       <h1 class="hero-title">Glow,<br><em>together.</em></h1>
       <p class="hero-sub">The whole bar. Just your people. Private reservations, licensed estheticians, and champagne included.</p>
       <div class="hero-btns">
-        <a class="btn" href="book.html">Book Your Party</a>
+        <a class="btn" href="#party-request">Book Your Party</a>
         <a class="btn ghost" href="#tiers-anchor">See Packages</a>
       </div>
     </div>
@@ -119,7 +116,7 @@
             <li>Éminence product samples</li>
             <li>2-hour private reservation</li>
           </ul>
-          <a class="btn ghost" href="book.html">Inquire</a>
+          <a class="btn ghost" href="#party-request">Inquire</a>
         </div>
         <div class="tier pop">
           <div class="tier-tag">Most Popular</div>
@@ -133,7 +130,7 @@
             <li>3-hour private reservation</li>
             <li>Complimentary product for honoree</li>
           </ul>
-          <a class="btn" href="book.html">Inquire</a>
+          <a class="btn" href="#party-request">Inquire</a>
         </div>
         <div class="tier">
           <div class="size">Groups of 10+</div>
@@ -146,7 +143,7 @@
             <li>Custom menu coordination</li>
             <li>Priority scheduling</li>
           </ul>
-          <a class="btn ghost" href="book.html">Inquire</a>
+          <a class="btn ghost" href="#party-request">Inquire</a>
         </div>
       </div>
       <p style="text-align:center;margin-top:40px;font-size:.88rem;color:var(--mid);">Not sure which fits? <b style="color:var(--charcoal);">Tell us the occasion — we'll match you.</b></p>
@@ -159,9 +156,57 @@
       <div class="eyebrow">Let's Plan It</div>
       <h3>Say the date. <em>We'll do the rest.</em></h3>
       <p>Tell us your date, group size, and the occasion — we'll handle everything from the menu to the champagne. Make it a ritual.</p>
-      <div style="margin-top:28px;"><a class="btn" href="book.html">Inquire Now →</a></div>
+      <div style="margin-top:28px;"><a class="btn" href="#party-request">Inquire Now →</a></div>
     </div>
   </div>
+
+  <section id="party-request">
+    <div class="wrap" style="max-width:640px;">
+      <div class="sec-head">
+        <div class="eyebrow center">Plan Your Party</div>
+        <h2 class="sec-title">Request a <em>private party.</em></h2>
+        <p style="margin-top:14px;text-align:center;font-size:.9rem;color:var(--mid);">Tell us what you're celebrating and we'll reach out to build your perfect facial party.</p>
+      </div>
+      <form action="https://formspree.io/f/mdarbbyw" method="POST" style="display:flex;flex-direction:column;gap:20px;margin-top:36px;">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none !important;">
+        <input type="hidden" name="_subject" value="New party request from miajunefacialbar.com">
+        <input type="hidden" name="_next" value="https://miajune-site.vlad-526.workers.dev/thanks.html">
+        <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">Your Name
+          <input type="text" name="name" required autocomplete="name" style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+        </label>
+        <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">Email
+          <input type="email" name="email" required autocomplete="email" style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+        </label>
+        <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">Phone
+          <input type="tel" name="phone" required autocomplete="tel" style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+        </label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;">
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">Location
+            <select name="location" style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+              <option>Birmingham, AL</option><option>Pelham, AL</option><option>Oxford, MS</option>
+            </select>
+          </label>
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">Occasion
+            <select name="party_type" style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+              <option>Birthday</option><option>Bachelorette / Bridal</option><option>Girls' Night</option><option>Corporate / Team</option><option>Teen Party</option><option>Other</option>
+            </select>
+          </label>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;">
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">Group Size
+            <input type="number" name="group_size" min="2" max="30" placeholder="e.g. 8" style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+          </label>
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">Preferred Date
+            <input type="date" name="preferred_date" style="display:block;width:100%;margin-top:8px;padding:13px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+          </label>
+        </div>
+        <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">Tell Us More
+          <textarea name="message" rows="4" style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;resize:vertical;"></textarea>
+        </label>
+        <button type="submit" class="btn" style="align-self:flex-start;border:none;cursor:pointer;">Request My Party →</button>
+      </form>
+    </div>
+  </section>
 
 </main>
 
@@ -173,6 +218,7 @@
     <a href="faq.html">FAQ</a>
     <a href="parties.html">Parties</a>
     <a href="book.html">Book Now</a>
+    <a href="contact.html">Contact</a>
     <a href="privacy.html">Privacy Policy</a>
   </span>
   © 2026 Mia June Facial Bar. All rights reserved.
@@ -185,5 +231,6 @@
     var open=l.classList.toggle('open');t.setAttribute('aria-expanded',open);});}
 })();
 </script>
+<script src="contact-fab.js" defer></script>
 </body>
 </html>

@@ -151,6 +151,9 @@
   .home .hero-overlap{display:none;}
   .home .scroll-cue{display:none;}
   .home .hero-img::after{inset:12px;}
+  /* center the hero photo on phones so the subject isn't cropped off the bottom */
+  .home .hero-img{min-height:58vh;}
+  .home .hero-img img{object-position:center center;}
   .home .quote-stage{min-height:340px;}
 
   /* re-assert phone-sized type (this sheet loads after styles.css's mobile pass) */
