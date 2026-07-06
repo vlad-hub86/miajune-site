@@ -34,12 +34,9 @@
     <a class="navlink" href="gift-cards.html">Gift Cards</a>
     <a class="navlink" href="team.html">Team</a>
     <a class="navlink" href="parties.html">Parties</a>
-    <a class="navlink" href="gallery.html">Gallery</a>
     <a class="navlink" href="news.html">News</a>
     <a class="navlink" href="about.html">About</a>
     <a class="navlink" href="franchise.html">Franchise</a>
-    <a class="navlink active" href="contact.html">Contact</a>
-    <a class="navlink nav-book" href="book.html">Book Now</a>
   </div>
 </nav>
 
@@ -164,14 +161,22 @@
 })();
 
 // Route Oxford messages to the Oxford inbox (separate Formspree form).
+// Also pre-select the location when arriving via ?location=… (floating Contact button).
 (function(){
   var f=document.querySelector('form[action*="formspree.io"]');
   var s=f&&f.querySelector('select[name="location"]');
   if(!f||!s) return;
   var MAIN="https://formspree.io/f/maqgvaby", OXFORD="https://formspree.io/f/xkolyyyg";
   var sync=function(){ f.action = /Oxford/i.test(s.value) ? OXFORD : MAIN; };
+  var want=new URLSearchParams(location.search).get("location");
+  if(want){
+    for(var i=0;i<s.options.length;i++){
+      if(s.options[i].text.toLowerCase()===want.toLowerCase()){s.selectedIndex=i;break;}
+    }
+  }
   s.addEventListener("change",sync); sync();
 })();
 </script>
+<script src="contact-fab.js" defer></script>
 </body>
 </html>

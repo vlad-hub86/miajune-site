@@ -15,14 +15,31 @@
 <meta property="og:title" content="Franchise Opportunities — Mia June Facial Bar">
 <meta property="og:description" content="Own a Mia June Facial Bar. A proven three-location model, Éminence partnership, and membership-driven recurring revenue.">
 <meta property="og:url" content="https://www.miajunefacialbar.com/franchise.html">
-<meta property="og:image" content="https://www.miajunefacialbar.com/images/the-mia-june-experience.jpg">
+<meta property="og:image" content="https://www.miajunefacialbar.com/images/esthetician-at-work-beneath-the-sunburst-mural.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FDFAF6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="home.css">
+<style>
+/* franchise-page tweaks on top of the editorial layer */
+.home .hero-ghost{font-style:normal;}
+.fsteps{max-width:820px;margin:0 auto;}
+.fstep{display:grid;grid-template-columns:88px 1fr;gap:30px;padding:32px 0;border-bottom:1px solid rgba(196,168,130,.28);}
+.fstep:first-of-type{border-top:1px solid rgba(196,168,130,.28);}
+.fstep .n{font-family:'Playfair Display',serif;font-style:italic;font-size:1.9rem;color:var(--gold);line-height:1;}
+.fstep h4{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:8px;}
+.fstep p{font-size:.88rem;line-height:1.8;color:var(--mid);max-width:560px;}
+@media(max-width:700px){.fstep{grid-template-columns:52px 1fr;gap:16px;}}
+.fform label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);}
+.fform input,.fform textarea{display:block;width:100%;margin-top:8px;padding:14px 16px;
+  border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;
+  font-size:.9rem;color:var(--charcoal);border-radius:0;}
+.fform textarea{resize:vertical;}
+</style>
 </head>
-<body>
+<body class="home">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav aria-label="Main navigation">
@@ -35,56 +52,73 @@
     <a class="navlink" href="gift-cards.html">Gift Cards</a>
     <a class="navlink" href="team.html">Team</a>
     <a class="navlink" href="parties.html">Parties</a>
-    <a class="navlink" href="gallery.html">Gallery</a>
     <a class="navlink" href="news.html">News</a>
     <a class="navlink" href="about.html">About</a>
     <a class="navlink active" href="franchise.html">Franchise</a>
-    <a class="navlink" href="contact.html">Contact</a>
-    <a class="navlink nav-book" href="book.html">Book Now</a>
   </div>
 </nav>
 
 <main id="main" class="page">
 
+  <!-- ============ HERO ============ -->
   <div class="hero">
-    <div class="hero-img">
-      <img loading="lazy" decoding="async" src="images/mia-june-experience.jpg" alt="Mia June Experience">
-      <div class="hero-img-tag">Now Expanding Into New Markets</div>
-    </div>
+    <div class="hero-ghost" aria-hidden="true">own it</div>
     <div class="hero-content">
-      <div class="eyebrow">Franchise Opportunity</div>
-      <h1 class="hero-title">Own a <em>Mia June</em><br>Facial Bar</h1>
-      <p class="hero-sub">Join a luxury skincare brand built on accessibility, results, and genuine human connection — and bring elevated beauty to your community.</p>
+      <div class="hero-kicker">Franchise Opportunity · Now Expanding</div>
+      <h1 class="hero-title">Own the<br><em>glow.</em></h1>
+      <p class="hero-sub">Mia June Facial Bar is a proven, membership-driven skincare concept — accessible luxury with real recurring revenue. Bring it to your community as its owner.</p>
+      <div class="hero-line"><span>3-Location Proven Model</span><i>✦</i><span>Éminence Partner</span><i>✦</i><span>Recurring Revenue</span></div>
       <div class="hero-btns">
-        <a class="btn" href="mailto:info@miajunefacialbar.com?subject=Franchise%20Information%20Request">Request Info</a>
-        <a class="btn ghost" href="Franchise_Page_Redesign.html" target="_blank">View the Pitch Deck</a>
+        <a class="btn" href="#franchise-inquiry">Start Your Inquiry</a>
+        <a class="btn ghost" href="#why">Why Mia June</a>
       </div>
+    </div>
+    <div class="hero-img">
+      <img fetchpriority="high" decoding="async" width="1199" height="1800" src="images/esthetician-at-work-beneath-the-sunburst-mural.jpg" alt="An esthetician performs a facial beneath the Mia June sunburst mural">
+      <div class="hero-overlap"><img loading="lazy" decoding="async" src="images/mixing-eminence-masques-at-the-bar.jpg" alt="An esthetician mixes Éminence masques at the facial bar"></div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">Scroll</div>
+  </div>
+
+  <!-- ============ marquee ============ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span>Turnkey Systems</span><span><em>Éminence Partnership</em></span><span>Membership Revenue</span><span><em>Training &amp; Support</em></span><span>Territory Selection</span><span><em>Brand With Heart</em></span>
+      <span>Turnkey Systems</span><span><em>Éminence Partnership</em></span><span>Membership Revenue</span><span><em>Training &amp; Support</em></span><span>Territory Selection</span><span><em>Brand With Heart</em></span>
     </div>
   </div>
 
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="eyebrow center">The Opportunity</div>
-        <h2 class="sec-title">Why the skincare market, <em>why now.</em></h2>
-        <p style="max-width:640px;margin:20px auto 0;font-size:.9rem;line-height:1.85;color:var(--mid);">The facial bar concept sits at the intersection of two explosive growth sectors: luxury wellness and accessible self-care. Mia June bridges both.</p>
-      </div>
-      <div class="fstats">
-        <div class="fstat"><b>$21B+</b><span>U.S. Skincare Market<br>by 2026</span></div>
-        <div class="fstat"><b>Éminence</b><span>Certified Partner<br>Award-Winning Products</span></div>
-        <div class="fstat"><b>3 Locations</b><span>Proven Model<br>Ready to Scale</span></div>
-      </div>
-    </div>
-  </section>
+  <!-- ============ stats ============ -->
+  <div class="strip">
+    <div><b>$21B+</b><span>U.S. Skincare Market by 2026</span></div>
+    <div><b>3</b><span>Locations · Proven Model</span></div>
+    <div><b>4.9★</b><span>Across 295+ Google Reviews</span></div>
+    <div><b>2025</b><span>Best of Alabama</span></div>
+  </div>
 
-  <section style="padding-top:0;">
+  <!-- ============ the opportunity ============ -->
+  <div class="emi rv">
+    <div class="emi-img"><img loading="lazy" decoding="async" src="images/led-light-therapy-panel-in-the-studio.jpg" alt="An LED light therapy panel treatment in the Mia June studio"></div>
+    <div class="emi-content">
+      <div class="eyebrow">No. 01 — The Opportunity</div>
+      <h3>A facial bar, <em>not a day spa.</em></h3>
+      <p>The facial bar concept sits at the intersection of two explosive growth sectors: luxury wellness and accessible self-care. High-frequency visits, modern treatments like LED and microcurrent, and a membership model that turns guests into predictable monthly revenue. Mia June bridges results and joy — and clients feel the difference.</p>
+    </div>
+  </div>
+
+  <!-- ============ why mia june ============ -->
+  <section id="why">
     <div class="wrap">
-      <div class="feature rev">
-        <div class="feature-img"><img loading="lazy" decoding="async" src="images/the-mia-june-experience.jpg" alt="The Mia June experience"></div>
+      <div class="sec-head rv">
+        <span class="sec-no">No. 02 — Why Mia June</span>
+        <h2 class="sec-title">A brand built on <em>real connection.</em></h2>
+      </div>
+      <div class="feature rev rv">
+        <div class="feature-img"><img loading="lazy" decoding="async" src="images/a-warm-towel-finish-in-the-lounge.jpg" alt="An esthetician finishes a treatment with a warm towel in the Mia June lounge"></div>
         <div>
-          <div class="eyebrow">Why Mia June</div>
-          <h3>A brand built on real connection</h3>
-          <p>We've built something rare: a luxury experience that doesn't feel intimidating. Clients come for the results — they stay for the feeling.</p>
+          <div class="eyebrow">What You Get</div>
+          <h3>Luxury that doesn't intimidate</h3>
+          <p>We've built something rare: a luxury experience that feels like joy, not judgment. Clients come for the results — they stay for the feeling. As an owner, you inherit all of it.</p>
           <div style="display:flex;flex-direction:column;gap:18px;">
             <p style="margin:0;"><b style="color:var(--gold);">✦ Turnkey Systems</b> — Proven operational playbooks, training programs, and brand standards from day one.</p>
             <p style="margin:0;"><b style="color:var(--gold);">✦ Éminence Partnership</b> — Exclusive access to award-winning organic skincare products that practically sell themselves.</p>
@@ -96,17 +130,68 @@
     </div>
   </section>
 
-  <div class="fquote">
+  <!-- ============ quote ============ -->
+  <div class="fquote rv">
     <div class="mark">"</div>
     <p>Mia June is special because it blends top-of-the-line skincare and elevated beauty services with a sense of accessibility. There is truly something for everyone here, whether you're coming in for results, relaxation, or a little bit of both.</p>
     <cite>— Tristan Adams, Franchisee, Oxford Location</cite>
   </div>
 
-  <section class="cta">
-    <div class="eyebrow center">Take the Next Step</div>
-    <h2>Ready to bring Mia June to your market?</h2>
-    <p>We're selectively expanding with passionate owners who share our vision. Reach out to learn about territory availability, investment ranges, and onboarding.</p>
-    <div class="btns"><a class="btn" href="mailto:info@miajunefacialbar.com?subject=Franchise%20Information%20Request">Request Franchise Information</a></div>
+  <!-- ============ the path ============ -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="sec-no">No. 03 — The Path</span>
+        <h2 class="sec-title">From inquiry to <em>opening day.</em></h2>
+      </div>
+      <div class="fsteps">
+        <div class="fstep rv"><span class="n">01</span><div><h4>Say hello</h4><p>Send the inquiry below. We'll share the franchise overview and answer your first questions — no pressure, no obligation.</p></div></div>
+        <div class="fstep rv"><span class="n">02</span><div><h4>Discovery call</h4><p>Meet the founding team, walk through the model, the numbers, and what makes a Mia June owner successful.</p></div></div>
+        <div class="fstep rv rv-d1"><span class="n">03</span><div><h4>Territory &amp; investment review</h4><p>We look at your market together — territory availability, investment ranges, and site criteria.</p></div></div>
+        <div class="fstep rv rv-d1"><span class="n">04</span><div><h4>Training &amp; buildout</h4><p>Our playbooks, Éminence certification, and hands-on training carry you from signed agreement to staffed studio.</p></div></div>
+        <div class="fstep rv rv-d2"><span class="n">05</span><div><h4>Grand opening</h4><p>You open the doors with our team beside you — and your community meets its new self-care sanctuary.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ inquiry form ============ -->
+  <section id="franchise-inquiry" style="background:var(--blush);">
+    <div class="wrap" style="max-width:640px;">
+      <div class="sec-head rv">
+        <span class="sec-no">No. 04 — Start the Conversation</span>
+        <h2 class="sec-title">Bring Mia June to <em>your market.</em></h2>
+        <p style="margin-top:14px;font-size:.9rem;color:var(--mid);">We're selectively expanding with passionate owners who share our vision. Introduce yourself below.</p>
+      </div>
+      <form class="fform rv" action="https://formspree.io/f/xeebnnvb" method="POST" style="display:flex;flex-direction:column;gap:20px;">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none !important;">
+        <input type="hidden" name="_subject" value="New franchise inquiry from miajunefacialbar.com">
+        <input type="hidden" name="_next" value="https://miajune-site.vlad-526.workers.dev/thanks.html">
+        <label>Your Name
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label>Email
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>Phone
+          <input type="tel" name="phone" required autocomplete="tel">
+        </label>
+        <label>Market / City of Interest
+          <input type="text" name="market" required placeholder="e.g. Nashville, TN">
+        </label>
+        <label>About You
+          <textarea name="message" rows="4" placeholder="Background, timeline, anything you'd like us to know"></textarea>
+        </label>
+        <button type="submit" class="btn" style="align-self:flex-start;border:none;cursor:pointer;">Send Inquiry →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-ed">
+    <div class="eyebrow center rv">Now Expanding Into New Markets</div>
+    <h2 class="rv">Bring the glow <em>home.</em></h2>
+    <p class="rv rv-d1">Territory conversations are open</p>
+    <div class="rv rv-d2"><a class="btn" href="#franchise-inquiry">Start Your Inquiry</a></div>
   </section>
 
 </main>
@@ -119,6 +204,7 @@
     <a href="faq.html">FAQ</a>
     <a href="parties.html">Parties</a>
     <a href="book.html">Book Now</a>
+    <a href="contact.html">Contact</a>
     <a href="privacy.html">Privacy Policy</a>
   </span>
   © 2026 Mia June Facial Bar. All rights reserved.
@@ -130,6 +216,30 @@
   if(t&&l){t.addEventListener('click',function(){
     var open=l.classList.toggle('open');t.setAttribute('aria-expanded',open);});}
 })();
+
+// editorial reveals (same behavior as the homepage layer)
+(function(){
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.rv, .emi');
+  if(!reduced&&'IntersectionObserver'in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }else{
+    els.forEach(function(el){el.classList.add('in');});
+  }
+  var ghost=document.querySelector('.hero-ghost');
+  if(ghost&&!reduced){
+    var raf=false;
+    window.addEventListener('scroll',function(){
+      if(raf)return;raf=true;
+      requestAnimationFrame(function(){
+        ghost.style.transform='translateY('+(window.scrollY*-.12)+'px)';raf=false;});
+    },{passive:true});
+  }
+})();
 </script>
+<script src="contact-fab.js" defer></script>
 </body>
 </html>
