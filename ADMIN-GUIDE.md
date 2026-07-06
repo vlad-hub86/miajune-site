@@ -53,10 +53,21 @@ teaser: "One sentence shown on the News page and, if featured, the home page."
 featured: false
 ---
 Post body in plain paragraphs. **Bold**, *italic*, and [links](https://example.com) work.
+
+![A guest relaxes during a facial](/images/news/my-photo.jpg "Optional caption shown under the photo")
 ```
 
 Commit it. Done — the Action does the rest. Set `featured: true` to put it in the
 home-page "What's New" band (the newest featured post wins).
+
+### Images inside a post
+
+In the CMS, use the editor's image button in the post body — uploads land in
+`images/news/` and are inserted automatically. Writing markdown by hand, use
+`![description](/images/news/photo.jpg)` on its own line for a full-width photo
+(add `"a caption"` after the path for a caption), or reuse any existing site photo
+with `![description](/images/photo-name.jpg)`. The description is the image's
+alt text for screen readers and search engines.
 
 ## Everything else on the site
 
