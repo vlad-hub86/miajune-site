@@ -59,7 +59,7 @@ const NAVJS = `<script>
 
 const relativize = (html, prefix) =>
   html
-    .replace(/href="(index|services|team|parties|news|about|franchise|book)\.html"/g, `href="${prefix}$1.html"`)
+    .replace(/href="(index|services|membership|gift-cards|team|parties|gallery|news|about|franchise|contact|book)\.html"/g, `href="${prefix}$1.html"`)
     .replace(/src="images\//g, `src="${prefix}images/`);
 
 function head(title, desc, canonPath, prefix) {
@@ -180,7 +180,7 @@ if (home.includes("<!-- FEATURED-NEWS:START")) {
 writeFileSync(join(ROOT, "index.html"), home);
 
 // 4. sitemap
-const staticPages = ["/", "/services.html", "/team.html", "/parties.html", "/about.html", "/franchise.html", "/book.html", "/news.html"];
+const staticPages = ["/", "/services.html", "/membership.html", "/gift-cards.html", "/team.html", "/parties.html", "/gallery.html", "/news.html", "/about.html", "/franchise.html", "/contact.html", "/faq.html", "/privacy.html", "/book.html"];
 const urls = [...staticPages, ...posts.map((p) => `/news/${p.meta.slug}.html`)];
 writeFileSync(join(ROOT, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
