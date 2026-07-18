@@ -13,7 +13,7 @@ const DOMAIN = "https://www.miajunefacialbar.com";
 
 // ---------- tiny front-matter + markdown ----------
 function parsePost(file) {
-  const raw = readFileSync(file, "utf8");
+  const raw = readFileSync(file, "utf8").replace(/\r\n/g, "\n");
   const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!m) throw new Error("No front matter: " + file);
   const meta = {};
