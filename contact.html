@@ -61,9 +61,6 @@
                  style="display:none !important;">
           <!-- Subject line for the notification email -->
           <input type="hidden" name="_subject" value="New message from miajunefacialbar.com">
-          <!-- Redirect to the branded thank-you page after submit (Formspree needs an absolute URL) -->
-          <input type="hidden" name="_next" value="https://miajune-site.vlad-526.workers.dev/thanks.html">
-
           <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">
             Your Name
             <input type="text" name="name" required autocomplete="name"
@@ -180,6 +177,7 @@
   s.addEventListener("change",sync); sync();
 })();
 </script>
+<script src="forms.js" defer></script>
 <script src="contact-fab.js" defer></script>
 </body>
 </html>
