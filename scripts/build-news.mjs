@@ -180,7 +180,7 @@ if (home.includes("<!-- FEATURED-NEWS:START")) {
 writeFileSync(join(ROOT, "index.html"), home);
 
 // 4. sitemap
-const staticPages = ["/", "/services.html", "/membership.html", "/gift-cards.html", "/team.html", "/parties.html", "/gallery.html", "/news.html", "/about.html", "/franchise.html", "/contact.html", "/faq.html", "/privacy.html", "/book.html"];
+const staticPages = ["/", "/services.html", "/membership.html", "/gift-cards.html", "/team.html", "/gallery.html", "/news.html", "/about.html", "/franchise.html", "/contact.html", "/faq.html", "/privacy.html", "/book.html"];
 const urls = [...staticPages, ...posts.map((p) => `/news/${p.meta.slug}.html`)];
 writeFileSync(join(ROOT, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
