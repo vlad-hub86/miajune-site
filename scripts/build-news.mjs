@@ -3,6 +3,7 @@
 // Reads news/posts/*.md → writes news/<slug>.html, news.html listing,
 // homepage featured band (between FEATURED-NEWS markers), and sitemap.xml.
 // Run: node scripts/build-news.mjs   (also run by GitHub Action on every push)
+// NOTE: parties.html is intentionally omitted from the sitemap while the page is hidden.
 
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join, basename } from "node:path";
