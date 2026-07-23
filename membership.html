@@ -70,8 +70,8 @@
           <p>Every facial uses Éminence Organic Skin Care, tailored to your skin.</p></div>
         <div class="booster"><div class="star">03</div><h4>Flexible By Location</h4>
           <p>Birmingham &amp; Pelham members can use their facial at either studio.</p></div>
-        <div class="booster"><div class="star">04</div><h4>Simple Sign-Up</h4>
-          <p>Join online or in-studio in just a few minutes — no long commitment.</p></div>
+        <div class="booster"><div class="star">04</div><h4>Member Perks</h4>
+          <p>10% off products and boosters all year, plus waived private-event fees.</p></div>
       </div>
     </div>
   </section>
@@ -82,7 +82,6 @@
         <div class="eyebrow center">Birmingham &amp; Pelham</div>
         <h2 class="sec-title">Choose your <em>plan.</em></h2>
       </div>
-      <!-- PRICING PLACEHOLDER: monthly membership prices were NOT in the Wix backup. The Square product pages below show the live price at checkout. Replace the "See pricing at checkout" line with the real monthly price once confirmed with the owner. -->
       <div class="tiers" style="grid-template-columns:repeat(2,1fr);max-width:760px;margin:0 auto;">
         <div class="tier">
           <div class="size">Monthly Membership</div>
@@ -91,9 +90,10 @@
             <li>One signature facial every month</li>
             <li>Use it at Birmingham <em>or</em> Pelham</li>
             <li>Éminence Organic Skin Care throughout</li>
+            <li>One-year membership, then month-to-month</li>
             <li><b>$85 / month</b></li>
           </ul>
-          <a class="btn" style="width:100%;text-align:center;" href="https://mia-june.square.site/product/mia-june-monthly-membership-1-month/88" target="_blank" rel="noopener">Sign Up →</a>
+          <a class="btn join-plan" data-plan="1" style="width:100%;text-align:center;" href="#join">Join Online →</a>
         </div>
         <div class="tier pop">
           <div class="tier-tag">Best Value</div>
@@ -103,17 +103,165 @@
             <li>Two signature facials every month</li>
             <li>Use them at Birmingham <em>or</em> Pelham</li>
             <li>Éminence Organic Skin Care throughout</li>
-            <li>Best for consistent, results-driven skin</li>
+            <li>One-year membership, then month-to-month</li>
             <li><b>$150 / month</b></li>
           </ul>
-          <a class="btn" style="width:100%;text-align:center;" href="https://mia-june.square.site/product/mia-june-monthly-membership-2-month/89" target="_blank" rel="noopener">Sign Up →</a>
+          <a class="btn join-plan" data-plan="2" style="width:100%;text-align:center;" href="#join">Join Online →</a>
         </div>
       </div>
       <p style="text-align:center;margin-top:32px;font-size:.85rem;color:var(--mid);">Prefer to sign up in person? <b style="color:var(--charcoal);">Come see us at either Birmingham or Pelham.</b></p>
     </div>
   </section>
 
-  <section style="background:var(--blush);">
+  <!-- ============ ONLINE MEMBERSHIP SIGNUP (Birmingham & Pelham) ============
+       Flow: 1) member details + agreement consent → Formspree notification
+             2) inline thank-you swaps in the Square subscription checkout link
+                for the chosen plan (secure card entry + recurring billing on
+                Square — NO card data ever touches this site or Formspree)
+             3) staff sends the official Membership Agreement for e-signature
+                from Square Dashboard → Contracts (see staff guide)
+       NOTE: form posts to the main contact Formspree endpoint for now, with
+       its own _subject line. Recommended: create a dedicated "Membership
+       Signups" form in the Formspree dashboard and swap the action URL. -->
+  <section id="join" style="background:var(--blush);">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow center">Join Online · Birmingham &amp; Pelham</div>
+        <h2 class="sec-title">Become a member in <em>three steps.</em></h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:start;">
+
+        <!-- Membership signup form → Formspree -->
+        <form action="https://formspree.io/f/maqgvaby" method="POST"
+              data-success-id="join-success"
+              style="display:flex;flex-direction:column;gap:20px;">
+
+          <!-- Honeypot anti-spam field (hidden from humans; bots fill it) -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+                 style="display:none !important;">
+          <input type="hidden" name="_subject" value="NEW MEMBERSHIP SIGNUP — miajunefacialbar.com">
+
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">
+            Full Name
+            <input type="text" name="name" required autocomplete="name"
+                   style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+          </label>
+
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">
+            Email
+            <input type="email" name="email" required autocomplete="email"
+                   style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+          </label>
+
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">
+            Phone
+            <input type="tel" name="phone" required autocomplete="tel"
+                   style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+          </label>
+
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">
+            Mailing Address
+            <input type="text" name="address" required autocomplete="street-address"
+                   style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+          </label>
+
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">
+            Home Studio
+            <select name="home_studio" required
+                    style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+              <option value="">Choose one…</option>
+              <option>Birmingham, AL</option>
+              <option>Pelham, AL</option>
+            </select>
+            <span style="display:block;margin-top:6px;font-size:.72rem;text-transform:none;letter-spacing:0;color:var(--mid);">You can use your facials at either studio — this just helps us set you up.</span>
+          </label>
+
+          <fieldset style="border:1px solid rgba(196,168,130,.5);padding:16px;margin:0;">
+            <legend style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);padding:0 6px;">Your Plan</legend>
+            <label style="display:flex;gap:10px;align-items:baseline;font-size:.9rem;color:var(--charcoal);padding:6px 0;cursor:pointer;">
+              <input type="radio" name="plan" value="1 service monthly — $85" required id="plan-1">
+              <span><b>One facial a month</b> — $85/month</span>
+            </label>
+            <label style="display:flex;gap:10px;align-items:baseline;font-size:.9rem;color:var(--charcoal);padding:6px 0;cursor:pointer;">
+              <input type="radio" name="plan" value="2 services monthly — $150" required id="plan-2">
+              <span><b>Two facials a month</b> — $150/month</span>
+            </label>
+          </fieldset>
+
+          <label style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);">
+            When Would You Like To Start? <span style="text-transform:none;letter-spacing:0;opacity:.7;">(optional)</span>
+            <input type="text" name="preferred_start" placeholder="e.g. August 2026"
+                   style="display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid rgba(196,168,130,.5);background:#fff;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--charcoal);border-radius:0;">
+          </label>
+
+          <label style="display:flex;gap:12px;align-items:flex-start;font-size:.82rem;line-height:1.7;color:var(--charcoal);cursor:pointer;">
+            <input type="checkbox" name="agreed_to_terms" value="Yes — agreed online" required style="margin-top:4px;">
+            <span>I have read and agree to the <a href="#terms" style="color:var(--gold);">Membership Terms</a> below, including the one-year commitment, monthly billing on the 1st, and the cancellation policy. I understand I'll receive the full Membership Agreement by email to sign electronically.</span>
+          </label>
+
+          <button type="submit" class="btn" style="align-self:flex-start;border:none;cursor:pointer;">Start My Membership →</button>
+
+          <p style="font-size:.72rem;color:var(--mid);line-height:1.6;">We'll never share your details. Payment is handled securely by Square — we never see or store your card number.</p>
+        </form>
+
+        <!-- What happens next -->
+        <div>
+          <div class="eyebrow">How It Works</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin:6px 0 24px;">Three steps to <em style="color:var(--gold);">member glow.</em></h3>
+
+          <div style="border-top:1px solid rgba(196,168,130,.4);padding:18px 0;">
+            <b style="font-family:'Playfair Display',serif;font-size:1.05rem;">1 · Tell us about you</b><br>
+            <span style="font-size:.85rem;color:var(--mid);line-height:1.7;">Fill out the form with your details, pick your plan, and agree to the membership terms.</span>
+          </div>
+          <div style="border-top:1px solid rgba(196,168,130,.4);padding:18px 0;">
+            <b style="font-family:'Playfair Display',serif;font-size:1.05rem;">2 · Set up your monthly payment</b><br>
+            <span style="font-size:.85rem;color:var(--mid);line-height:1.7;">Right after you submit, we'll send you to our secure Square checkout to start your plan. Your card stays safely with Square and bills on the 1st of each month.</span>
+          </div>
+          <div style="border-top:1px solid rgba(196,168,130,.4);padding:18px 0;">
+            <b style="font-family:'Playfair Display',serif;font-size:1.05rem;">3 · Sign your agreement</b><br>
+            <span style="font-size:.85rem;color:var(--mid);line-height:1.7;">Within a business day, your Membership Agreement arrives by email for a quick electronic signature — then you're official. Time to book that first facial.</span>
+          </div>
+
+          <!-- Membership terms summary -->
+          <div id="terms" style="border-top:1px solid rgba(196,168,130,.4);padding:18px 0;">
+            <b style="font-family:'Playfair Display',serif;font-size:1.05rem;">The fine print, in plain English</b>
+            <ul style="margin:12px 0 0;padding-left:18px;font-size:.82rem;color:var(--mid);line-height:1.8;">
+              <li>Your membership is a <b>one-year commitment</b>, then continues month-to-month (cancel anytime after the first year, no penalty).</li>
+              <li>Ending early has a one-time fee of <b>six months of membership dues</b>.</li>
+              <li>Covers <b>bar facials and chemical peels</b> only — treatment-room services get member benefits applied, you pay the difference.</li>
+              <li>Facials <b>don't roll over</b> month to month, but you can gift an unused facial to a friend or relative.</li>
+              <li>Facials can't be converted to gift cards or used toward products or gratuity. Gratuity isn't included in your monthly dues.</li>
+              <li>Billing runs on the <b>1st of each month</b> for that month. If a payment fails and we can't reach you within 3 days, the membership is cancelled.</li>
+              <li>Perks: <b>10% off products and boosters</b> year-round, and the private-event fee is waived for events hosted in the facial bar.</li>
+              <li>Valid at both Birmingham and Pelham. Hours, menu, and pricing may change — we'll keep you posted.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Success panel injected by forms.js after the form submits.
+           Which payment button shows is synced to the chosen plan. -->
+      <div id="join-success" style="display:none;">
+        <div class="form-success" role="status" style="text-align:center;padding:48px 24px;">
+          <div class="eyebrow center">Step 1 Complete</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin:10px 0 0;">Welcome — <em style="color:var(--gold);">one step to glow.</em></h3>
+          <p style="margin:18px auto 0;font-size:.92rem;line-height:1.8;color:var(--mid);max-width:460px;">
+            We've got your details. Now set up your monthly membership payment through our secure Square checkout:</p>
+          <div style="margin-top:26px;">
+            <span class="pay-plan-1"><a class="btn" href="https://mia-june.square.site/product/mia-june-monthly-membership-1-month/88" target="_blank" rel="noopener">Set Up $85/mo Payment on Square →</a></span>
+            <span class="pay-plan-2"><a class="btn" href="https://mia-june.square.site/product/mia-june-monthly-membership-2-month/89" target="_blank" rel="noopener">Set Up $150/mo Payment on Square →</a></span>
+          </div>
+          <p style="margin:22px auto 0;font-size:.8rem;line-height:1.8;color:var(--mid);max-width:460px;">
+            Then keep an eye on your inbox — your Membership Agreement will arrive within a business day for an easy electronic signature. Questions? <a href="mailto:info@miajunefacialbar.com" style="color:var(--gold);">info@miajunefacialbar.com</a></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
     <div class="wrap">
       <div class="sec-head">
         <div class="eyebrow center">Oxford, MS</div>
@@ -179,7 +327,37 @@
   if(t&&l){t.addEventListener('click',function(){
     var open=l.classList.toggle('open');t.setAttribute('aria-expanded',open);});}
 })();
+
+// Membership signup: pre-select plan from tier buttons / ?plan=, and keep the
+// success panel's Square payment button in sync with the chosen plan.
+(function(){
+  var p1=document.getElementById('plan-1'), p2=document.getElementById('plan-2');
+  var tpl=document.getElementById('join-success');
+  if(!p1||!p2||!tpl) return;
+
+  function syncPay(){
+    var s1=tpl.querySelector('.pay-plan-1'), s2=tpl.querySelector('.pay-plan-2');
+    if(!s1||!s2) return;
+    // Until a plan is chosen the form can't submit (radios are required),
+    // so default both visible only as a harmless fallback.
+    s1.style.display = p2.checked ? 'none' : '';
+    s2.style.display = p1.checked ? 'none' : '';
+  }
+  p1.addEventListener('change',syncPay);
+  p2.addEventListener('change',syncPay);
+
+  function choose(plan){ (plan==='2'?p2:p1).checked=true; syncPay(); }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.join-plan'),function(a){
+    a.addEventListener('click',function(){ choose(a.getAttribute('data-plan')); });
+  });
+
+  var want=new URLSearchParams(location.search).get('plan');
+  if(want==='1'||want==='2') choose(want);
+  syncPay();
+})();
 </script>
+<script src="forms.js" defer></script>
 <script src="contact-fab.js" defer></script>
 </body>
 </html>
