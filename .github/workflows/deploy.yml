@@ -1,0 +1,35 @@
+name: Deploy to Porkbun
+
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ["Build news pages"]
+    types: [completed]
+  workflow_dispatch:
+
+concurrency:
+  group: porkbun-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: pixie-ss1-ftp.porkbun.com
+          username: miajunefacialbar.com
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
