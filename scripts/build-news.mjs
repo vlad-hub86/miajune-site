@@ -29,12 +29,27 @@ function parsePost(file) {
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-function mdToHtml(md) {
-  // paragraphs, **bold**, *italic*, [text](url), ## headings — enough for news posts
+// ![alt](src) / ![alt](src "caption") — src may be a CMS upload (/images/news/…),
+// a repo-relative path (images/…), or an external https URL
+const IMG_MD = /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/;
+
+function imgTag(alt, src, prefix) {
+  const url = /^https?:/.test(src) ? src : prefix + src.replace(/^\//, "");
+  return `<img loading="lazy" decoding="async" src="${url}" alt="${alt.replace(/"/g, "&quot;")}">`;
+}
+
+function mdToHtml(md, prefix) {
+  // paragraphs, **bold**, *italic*, [text](url), ![images](src), ## headings — enough for news posts
   return md.split(/\n\s*\n/).map((block) => {
     block = block.trim();
     if (!block) return "";
     let h = esc(block);
+    const fig = h.match(new RegExp(`^${IMG_MD.source}$`));
+    if (fig) {
+      const [, alt, src, caption] = fig;
+      return `<figure class="post-figure">${imgTag(alt, src, prefix)}${caption ? `<figcaption>${caption}</figcaption>` : ""}</figure>`;
+    }
+    h = h.replace(new RegExp(IMG_MD.source, "g"), (_, alt, src) => imgTag(alt, src, prefix));
     h = h.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
     h = h.replace(/\*([^*]+)\*/g, "<em>$1</em>");
     h = h.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
@@ -111,7 +126,7 @@ for (const { meta, body } of posts) {
     <div class="eyebrow">News · ${fmtDate(meta.date)}</div>
     <h1 class="sec-title" style="margin-bottom:10px;">${meta.title}</h1>
     <div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:36px;">By ${meta.author}</div>
-${mdToHtml(body)}
+${mdToHtml(body, "../")}
     <div style="margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;">
       <a class="btn" href="../book.html">Book an Appointment</a>
       <a class="btn ghost" href="../news.html">← All News</a>
