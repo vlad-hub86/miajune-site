@@ -2,7 +2,10 @@
    Posts via fetch with `Accept: application/json` and swaps in an inline
    branded thank-you, so no redirect (works on the Formspree free plan and
    keeps visitors on the page). Without JS, forms fall back to a normal
-   POST and Formspree's hosted confirmation page. */
+   POST and Formspree's hosted confirmation page.
+   A form may name a custom success panel via data-success-id="<element id>"
+   (used by membership.html to show the Square payment step); otherwise the
+   generic thank-you below is used. */
 (function () {
   "use strict";
   if (!window.fetch || !window.FormData) return; /* very old browser → normal POST */
@@ -37,7 +40,9 @@
           headers: { Accept: "application/json" }
         }).then(function (res) {
           if (!res.ok) throw new Error("HTTP " + res.status);
-          form.innerHTML = SUCCESS_HTML;
+          var tplId = form.getAttribute("data-success-id");
+          var tpl = tplId ? document.getElementById(tplId) : null;
+          form.innerHTML = tpl ? tpl.innerHTML : SUCCESS_HTML;
           if (form.scrollIntoView) form.scrollIntoView({ behavior: "smooth", block: "center" });
         }).catch(function () {
           if (btn) { btn.disabled = false; btn.innerHTML = btnLabel; }
