@@ -4,7 +4,7 @@ date: 2026-04-02
 author: Allison Kravchuk
 teaser: "The Ever After Wedding Facial — effortless, radiant glow for your big day and every celebration leading up to it."
 featured: false
-image: images/magen-performing-a-facial-treatment.jpg
+image: images/calm-and-comfort.jpg
 ---
 This spring, we're launching something special… just for our brides. 💍✨
 
